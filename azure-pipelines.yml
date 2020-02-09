@@ -21,9 +21,6 @@ strategy:
 pool:
   vmImage: $(imageName)
 
-pool:
-  vmImage: ''
-
 variables:
   solution: '**/*.sln'
   buildPlatform: 'x86'
