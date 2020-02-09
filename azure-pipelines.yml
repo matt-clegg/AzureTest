@@ -4,8 +4,9 @@
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
 
 trigger:
-- master
-
+  branches:
+    include:
+    - '*'
 pool:
   vmImage: 'windows-latest'
 
@@ -14,12 +15,14 @@ variables:
   buildPlatform: 'x86'
   buildConfiguration: 'Release'
   monoGameVersion: 'v3.7.1'
-  major: 1
-  minor: 1
-   
-name: $(major).$(minor)$(Rev:.r)
 
 steps:
+- task: GitVersion@5
+  inputs:
+    runtime: 'full'
+    updateAssemblyInfo: true
+    configFilePath: 'gitversion.yml'
+
 - script: |
     powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://github.com/MonoGame/MonoGame/releases/download/$(monoGameVersion)/MonoGameSetup.exe', '.\MonoGameSetup.exe')"
   displayName: 'Download MonoGame $(monoGameVersion)'
