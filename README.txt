@@ -1,0 +1,1 @@
+[![Build Status](https://dev.azure.com/matt-clegg/AzureTesting/_apis/build/status/matt-clegg.AzureTest?branchName=master)](https://dev.azure.com/matt-clegg/AzureTesting/_build/latest?definitionId=1&branchName=master)
