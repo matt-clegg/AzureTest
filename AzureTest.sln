@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureTest.DirectX", "AzureTest.DirectX\AzureTest.DirectX.csproj", "{4DB75402-6144-4196-948E-EF3CB2DF881F}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AzureTest.Core", "AzureTest.Core\AzureTest.Core.shproj", "{A0CDBD0E-3A41-42B7-9425-A838BC2C7383}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		AzureTest.Core\AzureTest.Core.projitems*{4db75402-6144-4196-948e-ef3cb2df881f}*SharedItemsImports = 4
+		AzureTest.Core\AzureTest.Core.projitems*{a0cdbd0e-3a41-42b7-9425-a838bc2c7383}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DB75402-6144-4196-948E-EF3CB2DF881F}.Debug|x86.ActiveCfg = Debug|x86
+		{4DB75402-6144-4196-948E-EF3CB2DF881F}.Debug|x86.Build.0 = Debug|x86
+		{4DB75402-6144-4196-948E-EF3CB2DF881F}.Release|x86.ActiveCfg = Release|x86
+		{4DB75402-6144-4196-948E-EF3CB2DF881F}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E252DAD-ED09-49DE-B452-C350189AD668}
+	EndGlobalSection
+EndGlobal
