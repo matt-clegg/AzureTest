@@ -7,8 +7,22 @@ trigger:
   branches:
     include:
     - '*'
+
+strategy:
+  matrix:
+    linux:
+      imageName: "ubuntu-16.04"
+    mac:
+      imageName: "macos-10.14"
+    windows:
+      imageName: "windows-latest"
+  maxParallel: 3
+
 pool:
-  vmImage: 'windows-latest'
+  vmImage: $(imageName)
+
+pool:
+  vmImage: ''
 
 variables:
   solution: '**/*.sln'
@@ -22,7 +36,7 @@ steps:
     runtime: 'full'
     updateAssemblyInfo: true
     configFilePath: 'gitversion.yml'
-
+    
 - script: |
     powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://github.com/MonoGame/MonoGame/releases/download/$(monoGameVersion)/MonoGameSetup.exe', '.\MonoGameSetup.exe')"
   displayName: 'Download MonoGame $(monoGameVersion)'
