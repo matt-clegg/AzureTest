@@ -63,12 +63,6 @@ jobs:
     project: "AzureTest.OpenGL"
     buildPlatform: "AnyCPU"
   steps:
-  - task: GitVersion@5
-    inputs:
-      runtime: 'full'
-      updateAssemblyInfo: true
-      configFilePath: 'gitversion.yml'
-  
   - script: |
       powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://github.com/MonoGame/MonoGame/releases/download/$(monoGameVersion)/MonoGameSetup.exe', '.\MonoGameSetup.exe')"
     displayName: 'Download MonoGame $(monoGameVersion)'
@@ -106,12 +100,6 @@ jobs:
     project: "AzureTest.OpenGL"
     buildPlatform: "AnyCPU"
   steps:
-  - task: GitVersion@5
-    inputs:
-      runtime: 'full'
-      updateAssemblyInfo: true
-      configFilePath: 'gitversion.yml'
-  
   - script: |
       powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://github.com/MonoGame/MonoGame/releases/download/$(monoGameVersion)/MonoGameSetup.exe', '.\MonoGameSetup.exe')"
     displayName: 'Download MonoGame $(monoGameVersion)'
