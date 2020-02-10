@@ -7,7 +7,7 @@ trigger:
   branches:
     include:
     - '*'
-  
+      
 variables:
   solution: '**/*.sln'
   buildConfiguration: 'Release'
@@ -22,39 +22,39 @@ jobs:
     buildPlatform: "x86"
   steps:
   - task: GitVersion@5
-  inputs:
-    runtime: 'full'
-    updateAssemblyInfo: true
-    configFilePath: 'gitversion.yml'
-    
-- script: |
-    powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://github.com/MonoGame/MonoGame/releases/download/$(monoGameVersion)/MonoGameSetup.exe', '.\MonoGameSetup.exe')"
-  displayName: 'Download MonoGame $(monoGameVersion)'
+    inputs:
+      runtime: 'full'
+      updateAssemblyInfo: true
+      configFilePath: 'gitversion.yml'
+  
+  - script: |
+      powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://github.com/MonoGame/MonoGame/releases/download/$(monoGameVersion)/MonoGameSetup.exe', '.\MonoGameSetup.exe')"
+    displayName: 'Download MonoGame $(monoGameVersion)'
 
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: 'MonoGameSetup.exe'
-    destinationFolder: './tmp/'
-  displayName: 'Extract MonoGame $(monoGameVersion)'
+  - task: ExtractFiles@1
+    inputs:
+      archiveFilePatterns: 'MonoGameSetup.exe'
+      destinationFolder: './tmp/'
+    displayName: 'Extract MonoGame $(monoGameVersion)'
 
-- script: |
-    mkdir "%PROGRAMFILES(X86)%\MSBuild"
-    xcopy .\tmp\$PROGRAMFILES\MSBuild "%PROGRAMFILES(X86)%\MSBuild" /E /Y
-    mkdir "%PROGRAMFILES(X86)%\MonoGame\v3.0\Assemblies\"
-    xcopy .\tmp\Assemblies "%PROGRAMFILES(X86)%\MonoGame\v3.0\Assemblies" /E /Y
-  displayName: 'Install MonoGame $(monoGameVersion)'
+  - script: |
+      mkdir "%PROGRAMFILES(X86)%\MSBuild"
+      xcopy .\tmp\$PROGRAMFILES\MSBuild "%PROGRAMFILES(X86)%\MSBuild" /E /Y
+      mkdir "%PROGRAMFILES(X86)%\MonoGame\v3.0\Assemblies\"
+      xcopy .\tmp\Assemblies "%PROGRAMFILES(X86)%\MonoGame\v3.0\Assemblies" /E /Y
+    displayName: 'Install MonoGame $(monoGameVersion)'
 
-- task: NuGetToolInstaller@1
+  - task: NuGetToolInstaller@1
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '$(solution)'
 
-- task: VSBuild@1
-  inputs:
-    solution: '**/$(project)/$(project).csproj'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+  - task: VSBuild@1
+    inputs:
+      solution: '**/$(project)/$(project).csproj'
+      platform: '$(buildPlatform)'
+      configuration: '$(buildConfiguration)'
 
 - job: macOS
   pool:
@@ -64,39 +64,41 @@ jobs:
     buildPlatform: "AnyCPU"
   steps:
   - task: GitVersion@5
-  inputs:
-    runtime: 'full'
-    updateAssemblyInfo: true
-    configFilePath: 'gitversion.yml'
-    
-- script: |
-    powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://github.com/MonoGame/MonoGame/releases/download/$(monoGameVersion)/MonoGameSetup.exe', '.\MonoGameSetup.exe')"
-  displayName: 'Download MonoGame $(monoGameVersion)'
+    inputs:
+      runtime: 'full'
+      updateAssemblyInfo: true
+      configFilePath: 'gitversion.yml'
+  
+  - script: |
+      powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://github.com/MonoGame/MonoGame/releases/download/$(monoGameVersion)/MonoGameSetup.exe', '.\MonoGameSetup.exe')"
+    displayName: 'Download MonoGame $(monoGameVersion)'
 
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: 'MonoGameSetup.exe'
-    destinationFolder: './tmp/'
-  displayName: 'Extract MonoGame $(monoGameVersion)'
+  - task: ExtractFiles@1
+    inputs:
+      archiveFilePatterns: 'MonoGameSetup.exe'
+      destinationFolder: './tmp/'
+    displayName: 'Extract MonoGame $(monoGameVersion)'
 
-- script: |
-    mkdir "%PROGRAMFILES(X86)%\MSBuild"
-    xcopy .\tmp\$PROGRAMFILES\MSBuild "%PROGRAMFILES(X86)%\MSBuild" /E /Y
-    mkdir "%PROGRAMFILES(X86)%\MonoGame\v3.0\Assemblies\"
-    xcopy .\tmp\Assemblies "%PROGRAMFILES(X86)%\MonoGame\v3.0\Assemblies" /E /Y
-  displayName: 'Install MonoGame $(monoGameVersion)'
+  - script: |
+      mkdir "%PROGRAMFILES(X86)%\MSBuild"
+      xcopy .\tmp\$PROGRAMFILES\MSBuild "%PROGRAMFILES(X86)%\MSBuild" /E /Y
+      mkdir "%PROGRAMFILES(X86)%\MonoGame\v3.0\Assemblies\"
+      xcopy .\tmp\Assemblies "%PROGRAMFILES(X86)%\MonoGame\v3.0\Assemblies" /E /Y
+    displayName: 'Install MonoGame $(monoGameVersion)'
 
-- task: NuGetToolInstaller@1
+  - task: NuGetToolInstaller@1
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '$(solution)'
 
-- task: VSBuild@1
-  inputs:
-    solution: '**/$(project)/$(project).csproj'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+  - task: VSBuild@1
+    inputs:
+      solution: '**/$(project)/$(project).csproj'
+      platform: '$(buildPlatform)'
+      configuration: '$(buildConfiguration)'
+
+
 - job: Linux
   pool:
     vmImage: 'ubuntu-16.04'
@@ -105,36 +107,36 @@ jobs:
     buildPlatform: "AnyCPU"
   steps:
   - task: GitVersion@5
-  inputs:
-    runtime: 'full'
-    updateAssemblyInfo: true
-    configFilePath: 'gitversion.yml'
-    
-- script: |
-    powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://github.com/MonoGame/MonoGame/releases/download/$(monoGameVersion)/MonoGameSetup.exe', '.\MonoGameSetup.exe')"
-  displayName: 'Download MonoGame $(monoGameVersion)'
+    inputs:
+      runtime: 'full'
+      updateAssemblyInfo: true
+      configFilePath: 'gitversion.yml'
+  
+  - script: |
+      powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://github.com/MonoGame/MonoGame/releases/download/$(monoGameVersion)/MonoGameSetup.exe', '.\MonoGameSetup.exe')"
+    displayName: 'Download MonoGame $(monoGameVersion)'
 
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: 'MonoGameSetup.exe'
-    destinationFolder: './tmp/'
-  displayName: 'Extract MonoGame $(monoGameVersion)'
+  - task: ExtractFiles@1
+    inputs:
+      archiveFilePatterns: 'MonoGameSetup.exe'
+      destinationFolder: './tmp/'
+    displayName: 'Extract MonoGame $(monoGameVersion)'
 
-- script: |
-    mkdir "%PROGRAMFILES(X86)%\MSBuild"
-    xcopy .\tmp\$PROGRAMFILES\MSBuild "%PROGRAMFILES(X86)%\MSBuild" /E /Y
-    mkdir "%PROGRAMFILES(X86)%\MonoGame\v3.0\Assemblies\"
-    xcopy .\tmp\Assemblies "%PROGRAMFILES(X86)%\MonoGame\v3.0\Assemblies" /E /Y
-  displayName: 'Install MonoGame $(monoGameVersion)'
+  - script: |
+      mkdir "%PROGRAMFILES(X86)%\MSBuild"
+      xcopy .\tmp\$PROGRAMFILES\MSBuild "%PROGRAMFILES(X86)%\MSBuild" /E /Y
+      mkdir "%PROGRAMFILES(X86)%\MonoGame\v3.0\Assemblies\"
+      xcopy .\tmp\Assemblies "%PROGRAMFILES(X86)%\MonoGame\v3.0\Assemblies" /E /Y
+    displayName: 'Install MonoGame $(monoGameVersion)'
 
-- task: NuGetToolInstaller@1
+  - task: NuGetToolInstaller@1
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '$(solution)'
 
-- task: VSBuild@1
-  inputs:
-    solution: '**/$(project)/$(project).csproj'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+  - task: VSBuild@1
+    inputs:
+      solution: '**/$(project)/$(project).csproj'
+      platform: '$(buildPlatform)'
+      configuration: '$(buildConfiguration)'
