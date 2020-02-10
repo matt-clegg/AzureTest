@@ -38,7 +38,6 @@ variables:
   buildConfiguration: 'Release'
   monoGameVersion: 'v3.7.1'
 
-steps:
 - task: GitVersion@5
   inputs:
     runtime: 'full'
