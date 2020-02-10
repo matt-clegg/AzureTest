@@ -32,7 +32,7 @@ jobs:
     buildPlatform: "AnyCPU"
   steps:
   - script: echo hello from Linux
-
+  
 variables:
   solution: '**/*.sln'
   buildConfiguration: 'Release'
@@ -44,7 +44,7 @@ steps:
     runtime: 'full'
     updateAssemblyInfo: true
     configFilePath: 'gitversion.yml'
-
+    
 - script: |
     powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://github.com/MonoGame/MonoGame/releases/download/$(monoGameVersion)/MonoGameSetup.exe', '.\MonoGameSetup.exe')"
   displayName: 'Download MonoGame $(monoGameVersion)'
