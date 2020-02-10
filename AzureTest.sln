@@ -14,10 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureTest.OpenGL", "AzureTest.OpenGL\AzureTest.OpenGL.csproj", "{B788BAF2-D3DF-48F7-9B42-DAFAD7AD095D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureTest.OpenGL", "AzureTest.OpenGL\AzureTest.OpenGL.csproj", "{47C0C882-42F7-44FE-9300-4D211FC80CF7}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		AzureTest.Core\AzureTest.Core.projitems*{47c0c882-42f7-44fe-9300-4d211fc80cf7}*SharedItemsImports = 4
 		AzureTest.Core\AzureTest.Core.projitems*{4db75402-6144-4196-948e-ef3cb2df881f}*SharedItemsImports = 4
 		AzureTest.Core\AzureTest.Core.projitems*{a0cdbd0e-3a41-42b7-9425-a838bc2c7383}*SharedItemsImports = 13
 	EndGlobalSection
@@ -34,14 +35,14 @@ Global
 		{4DB75402-6144-4196-948E-EF3CB2DF881F}.Release|Any CPU.ActiveCfg = Release|x86
 		{4DB75402-6144-4196-948E-EF3CB2DF881F}.Release|x86.ActiveCfg = Release|x86
 		{4DB75402-6144-4196-948E-EF3CB2DF881F}.Release|x86.Build.0 = Release|x86
-		{B788BAF2-D3DF-48F7-9B42-DAFAD7AD095D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B788BAF2-D3DF-48F7-9B42-DAFAD7AD095D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B788BAF2-D3DF-48F7-9B42-DAFAD7AD095D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{B788BAF2-D3DF-48F7-9B42-DAFAD7AD095D}.Debug|x86.Build.0 = Debug|Any CPU
-		{B788BAF2-D3DF-48F7-9B42-DAFAD7AD095D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B788BAF2-D3DF-48F7-9B42-DAFAD7AD095D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B788BAF2-D3DF-48F7-9B42-DAFAD7AD095D}.Release|x86.ActiveCfg = Release|Any CPU
-		{B788BAF2-D3DF-48F7-9B42-DAFAD7AD095D}.Release|x86.Build.0 = Release|Any CPU
+		{47C0C882-42F7-44FE-9300-4D211FC80CF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47C0C882-42F7-44FE-9300-4D211FC80CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47C0C882-42F7-44FE-9300-4D211FC80CF7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{47C0C882-42F7-44FE-9300-4D211FC80CF7}.Debug|x86.Build.0 = Debug|Any CPU
+		{47C0C882-42F7-44FE-9300-4D211FC80CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47C0C882-42F7-44FE-9300-4D211FC80CF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47C0C882-42F7-44FE-9300-4D211FC80CF7}.Release|x86.ActiveCfg = Release|Any CPU
+		{47C0C882-42F7-44FE-9300-4D211FC80CF7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

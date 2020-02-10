@@ -7,13 +7,34 @@ trigger:
   branches:
     include:
     - '*'
-
-pool:
-  vmImage: 'windows-latest'
-
+jobs:
+- job: Windows
+  pool:
+    vmImage: 'windows-latest'
+  variables:
+    project: "AzureTest.DirectX"
+    buildPlatform: "x86"
+  steps:
+  - script: echo hello from Windows
+- job: macOS
+  pool:
+    vmImage: 'macOS-10.14'
+  variables:
+    project: "AzureTest.OpenGL"
+    buildPlatform: "AnyCPU"
+  steps:
+  - script: echo hello from macOS
+- job: Linux
+  pool:
+    vmImage: 'ubuntu-16.04'
+  variables:
+    project: "AzureTest.OpenGL"
+    buildPlatform: "AnyCPU"
+  steps:
+  - script: echo hello from Linux
+  
 variables:
   solution: '**/*.sln'
-  buildPlatform: 'x86'
   buildConfiguration: 'Release'
   monoGameVersion: 'v3.7.1'
 
@@ -49,6 +70,6 @@ steps:
 
 - task: VSBuild@1
   inputs:
-    solution: '$(solution)'
+    project: '**/$(project)/$(project).csproj'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
